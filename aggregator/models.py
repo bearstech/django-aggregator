@@ -10,7 +10,7 @@ feedparser.USER_AGENT = ua
 
 class Feed(models.Model):
     title = models.CharField(_('Title'), max_length=500)
-    feed_url = models.URLField(_('Feed URL'), unique=True, max_length=500)
+    feed_url = models.URLField(_('Feed URL'), unique=True, max_length=255)
     public_url = models.URLField(_('Public URL'), max_length=500)
     is_defunct = models.BooleanField(_('Is defunct'))
 
@@ -61,7 +61,7 @@ class Entry(models.Model):
     link = models.URLField(_('Link'), max_length=500)
     summary = models.TextField(_('Summary'), blank=True)
     date = models.DateTimeField(_('Date'))
-    guid = models.CharField(_('GUID'), max_length=500,
+    guid = models.CharField(_('GUID'), max_length=255,
                             unique=True, db_index=True)
 
     class Meta:
